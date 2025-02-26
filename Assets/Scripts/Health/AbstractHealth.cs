@@ -20,7 +20,7 @@ namespace Health
 
             _health -= damage;
 
-            if(_health < 0)
+            if(_health <= 0)
             {
                 _health = 0;
                 Die();

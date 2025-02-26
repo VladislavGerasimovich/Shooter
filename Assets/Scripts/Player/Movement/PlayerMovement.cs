@@ -38,7 +38,6 @@ namespace Player.Movement
                 }
                 else
                 {
-                    Debug.Log("падает");
                     Vector3 horizontalVelocity = _characterController.velocity;
                     horizontalVelocity.y = 0;
                     _playerJump.Falling();

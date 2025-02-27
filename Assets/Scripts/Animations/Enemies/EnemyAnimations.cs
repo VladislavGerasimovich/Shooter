@@ -17,7 +17,6 @@ namespace Animations.Enemies
 
         public void Idle()
         {
-            Debug.Log("idle");
             _animator.SetTrigger(_animatorData.Idle);
         }
 

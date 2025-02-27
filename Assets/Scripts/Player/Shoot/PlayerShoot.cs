@@ -18,7 +18,6 @@ namespace Player.Shoot
 
         public void Run()
         {
-            Debug.Log("Run");
             _shotGun.Shoot(_cameraTransform.position, _cameraTransform.forward);
         }
     }

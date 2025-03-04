@@ -4,7 +4,7 @@ namespace Health
 {
     public abstract class AbstractHealth : MonoBehaviour
     {
-        [SerializeField] private float _health;
+        [SerializeField] protected float Health;
 
         public void TakeDamage(float damage)
         {
@@ -14,16 +14,16 @@ namespace Health
                 return;
             }
 
-            if(_health < 0)
+            if(Health < 0)
             {
                 return;
             }
 
-            _health -= damage;
+            Health -= damage;
 
-            if(_health <= 0)
+            if(Health <= 0)
             {
-                _health = 0;
+                Health = 0;
                 Die();
             }
         }

@@ -29,7 +29,26 @@ namespace Weapons
             _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
         }
 
-        public void Set()
+        public void Add(int value)
+        {
+            int allCurrentAmmoCount = _currentAmmoCount + _ammoInMagazine;
+
+            if (allCurrentAmmoCount < _maxAmmo)
+            {
+                if(value > (_maxAmmo - _currentAmmoCount))
+                {
+                    _currentAmmoCount = _maxAmmo - _ammoInMagazine;
+                    _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
+
+                    return;
+                }
+
+                _currentAmmoCount += value;
+                _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
+            }
+        }
+
+        public void Deduct()
         {
             _ammoInMagazine--;
             _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);

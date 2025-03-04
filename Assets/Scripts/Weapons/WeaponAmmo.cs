@@ -1,4 +1,5 @@
 using System.Collections;
+using UI;
 using UnityEngine;
 
 namespace Weapons
@@ -9,6 +10,7 @@ namespace Weapons
         [SerializeField] private int _maxAmmo;
         [SerializeField] private int _maxAmmoInMagazine;
         [SerializeField] private AmmoCountView _ammoCountView;
+        [SerializeField] private TimeOfAction _timeOfAction;
 
         private int _currentAmmoCount;
         private int _ammoInMagazine;
@@ -49,6 +51,7 @@ namespace Weapons
         {
             CanShoot = false;
 
+            _timeOfAction.StartRunCoroutine(_reloadTime);
             yield return new WaitForSeconds(_reloadTime);
 
             CanShoot = true;

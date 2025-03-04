@@ -6,7 +6,7 @@ namespace Health
     {
         [SerializeField] protected float Health;
 
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
             Debug.Log(damage + " inflict damage");
             if(damage < 0)

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace Health
 {
     public class PlayerHealth : AbstractHealth
     {
         [SerializeField] private float _maxHealth;
+        [SerializeField] private TMP_Text _text;
 
         public float MaxHealth => _maxHealth;
         public float CurrentHealth => Health;
@@ -14,6 +16,7 @@ namespace Health
         private void Awake()
         {
             Health = _maxHealth;
+            _text.text = Health.ToString();
         }
 
         public void Add(int value)
@@ -24,7 +27,14 @@ namespace Health
             {
                 Health = _maxHealth;
             }
-            Debug.Log(Health);
+
+            _text.text = Health.ToString();
+        }
+
+        public override void TakeDamage(float damage)
+        {
+            base.TakeDamage(damage);
+            _text.text = Health.ToString();
         }
 
         public override void Die()

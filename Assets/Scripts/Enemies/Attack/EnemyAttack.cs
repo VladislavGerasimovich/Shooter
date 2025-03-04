@@ -26,7 +26,10 @@ namespace Enemies.Attack
 
         public void Run()
         {
-            AttackCoroutine = StartCoroutine(Attack());
+            if(AttackCoroutine == null)
+            {
+                AttackCoroutine = StartCoroutine(Attack());
+            }
         }
 
         public void StopAttack()
@@ -34,6 +37,7 @@ namespace Enemies.Attack
             if(AttackCoroutine != null)
             {
                 _isAttacked = false;
+                StopCoroutine(AttackCoroutine);
                 AttackCoroutine = null;
                 _enemyAnimations.Run();
             }

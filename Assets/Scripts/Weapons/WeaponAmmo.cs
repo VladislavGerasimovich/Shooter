@@ -12,55 +12,56 @@ namespace Weapons
         [SerializeField] private AmmoCountView _ammoCountView;
         [SerializeField] private TimeOfAction _timeOfAction;
 
-        private int _currentAmmoCount;
-        private int _ammoInMagazine;
-
+        public int CurrentAmmoCount { get; private set; }
+        public int AmmoInMagazine { get; private set; }
         public bool CanShoot { get; private set; }
+
+        public int MaxAmmo => _maxAmmo;
 
         private void Awake()
         {
-            _ammoInMagazine = _maxAmmoInMagazine;
-            _currentAmmoCount = _maxAmmo - _maxAmmoInMagazine;
+            AmmoInMagazine = _maxAmmoInMagazine;
+            CurrentAmmoCount = _maxAmmo - _maxAmmoInMagazine;
             CanShoot = true;
         }
 
         private void Start()
         {
-            _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
+            _ammoCountView.Set(AmmoInMagazine, CurrentAmmoCount);
         }
 
         public void Add(int value)
         {
-            int allCurrentAmmoCount = _currentAmmoCount + _ammoInMagazine;
+            int allCurrentAmmoCount = CurrentAmmoCount + AmmoInMagazine;
 
             if (allCurrentAmmoCount < _maxAmmo)
             {
-                if(value > (_maxAmmo - _currentAmmoCount))
+                if(value > (_maxAmmo - CurrentAmmoCount))
                 {
-                    _currentAmmoCount = _maxAmmo - _ammoInMagazine;
-                    _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
+                    CurrentAmmoCount = _maxAmmo - AmmoInMagazine;
+                    _ammoCountView.Set(AmmoInMagazine, CurrentAmmoCount);
 
                     return;
                 }
 
-                _currentAmmoCount += value;
-                _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
+                CurrentAmmoCount += value;
+                _ammoCountView.Set(AmmoInMagazine, CurrentAmmoCount);
             }
         }
 
-        public void Deduct()
+        public void Subtract()
         {
-            _ammoInMagazine--;
-            _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
+            AmmoInMagazine--;
+            _ammoCountView.Set(AmmoInMagazine, CurrentAmmoCount);
 
-            if(_ammoInMagazine == 0 && _currentAmmoCount > 0)
+            if(AmmoInMagazine == 0 && CurrentAmmoCount > 0)
             {
                 StartCoroutine(Reload());
 
                 return;
             }
 
-            if(_currentAmmoCount == 0)
+            if(CurrentAmmoCount == 0)
             {
                 CanShoot = false;
             }
@@ -75,19 +76,19 @@ namespace Weapons
 
             CanShoot = true;
 
-            if (_currentAmmoCount < _maxAmmoInMagazine)
+            if (CurrentAmmoCount < _maxAmmoInMagazine)
             {
-                _ammoInMagazine = _currentAmmoCount;
-                _currentAmmoCount -= _ammoInMagazine;
+                AmmoInMagazine = CurrentAmmoCount;
+                CurrentAmmoCount -= AmmoInMagazine;
             }
 
-            if(_currentAmmoCount >= _maxAmmoInMagazine)
+            if(CurrentAmmoCount >= _maxAmmoInMagazine)
             {
-                _ammoInMagazine = _maxAmmoInMagazine;
-                _currentAmmoCount -= _ammoInMagazine;
+                AmmoInMagazine = _maxAmmoInMagazine;
+                CurrentAmmoCount -= AmmoInMagazine;
             }
 
-            _ammoCountView.Set(_ammoInMagazine, _currentAmmoCount);
+            _ammoCountView.Set(AmmoInMagazine, CurrentAmmoCount);
         }
     }
 }

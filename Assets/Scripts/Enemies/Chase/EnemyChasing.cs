@@ -53,13 +53,13 @@ namespace Enemies.Chase
             {
                 _enemyMovement.Move(_target);
 
-                if (Vector3.Distance(transform.position, _target.position) < 0.5f)
+                if (Vector3.Distance(transform.position, _target.position) < 0.8f)
                 {
                     _enemyAttack.Run();
 
                     while(_enemyAttack.AttackCoroutine != null)
                     {
-                        if (Vector3.Distance(transform.position, _target.position) > 0.8f)
+                        if (Vector3.Distance(transform.position, _target.position) > 1f)
                         {
                             _enemyAttack.StopAttack();
                         }

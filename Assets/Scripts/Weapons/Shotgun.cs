@@ -26,7 +26,7 @@ namespace Weapons
             Debug.Log(_weaponAmmo.CanShoot + " weapon ammo can shoot");
             if(_attackDelay.CanAttack == true && _weaponAmmo.CanShoot == true)
             {
-                _weaponAmmo.Deduct();
+                _weaponAmmo.Subtract();
                 bool isHit = Physics.Raycast(
                     startpoint,
                     direction,

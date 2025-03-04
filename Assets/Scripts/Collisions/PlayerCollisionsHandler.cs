@@ -30,8 +30,13 @@ namespace Collisions
             {
                 if(object3d.Type == Constants.Ammo)
                 {
-                    _weaponAmmo.Add(object3d.Count);
-                    object3d.Destroy();
+                    bool canAddAmmo = _weaponAmmo.MaxAmmo > (_weaponAmmo.CurrentAmmoCount + _weaponAmmo.AmmoInMagazine);
+
+                    if (canAddAmmo == true)
+                    {
+                        _weaponAmmo.Add(object3d.Count);
+                        object3d.Destroy();
+                    }
                 }
                 else if (object3d.Type == Constants.Health)
                 {

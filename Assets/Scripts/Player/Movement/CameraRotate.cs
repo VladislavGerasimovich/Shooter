@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 
 namespace Player.Movement
@@ -7,6 +8,7 @@ namespace Player.Movement
         [SerializeField] private float _verticalTurnSensitivity = 10f;
         [SerializeField] private float _verticalMinAngle = -89;
         [SerializeField] private float _verticalMaxAngle = 89;
+        [SerializeField] private InventoryPanel _inventoryPanel;
 
         private float _cameraAngle = 0;
 
@@ -17,9 +19,12 @@ namespace Player.Movement
 
         private void Update()
         {
-            _cameraAngle -= Input.GetAxis(Constants.VerticalMouseAxis) * _verticalTurnSensitivity;
-            _cameraAngle = Mathf.Clamp(_cameraAngle, _verticalMinAngle, _verticalMaxAngle);
-            transform.localEulerAngles = Vector3.right * _cameraAngle;
+            if(_inventoryPanel.IsOpen == false)
+            {
+                _cameraAngle -= Input.GetAxis(Constants.VerticalMouseAxis) * _verticalTurnSensitivity;
+                _cameraAngle = Mathf.Clamp(_cameraAngle, _verticalMinAngle, _verticalMaxAngle);
+                transform.localEulerAngles = Vector3.right * _cameraAngle;
+            }
         }
     }
 }

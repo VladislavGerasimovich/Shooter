@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4373718276354517355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5936503621093420620}
+  - component: {fileID: 1433580042728652472}
+  - component: {fileID: 3056365955534051059}
+  m_Layer: 0
+  m_Name: PistolAmmoContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5936503621093420620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4373718276354517355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.24, y: 0.6, z: 10.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5093785812215959759}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1433580042728652472
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4373718276354517355}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3056365955534051059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4373718276354517355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594b9232bd6c17f41b42ddfecd18e657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectRotate: {fileID: 5368230310803834464}
+  _type: PistolAmmo
+  _count: 10
+--- !u!1001 &5097593039547504211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5936503621093420620}
+    m_Modifications:
+    - target: {fileID: 1646637928674852, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_Name
+      value: PistolAmmo3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1646637928674852, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5368230310803834464}
+  m_SourcePrefab: {fileID: 100100000, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+--- !u!4 &5093785812215959759 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4093383823132316, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+  m_PrefabInstance: {fileID: 5097593039547504211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5096826041129001079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1646637928674852, guid: 7bc14d437600a1e4ea3780b591a7e1bb, type: 3}
+  m_PrefabInstance: {fileID: 5097593039547504211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5368230310803834464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096826041129001079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb6a984376c1c847a20035a528b6e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

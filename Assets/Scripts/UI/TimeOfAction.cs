@@ -9,11 +9,18 @@ namespace UI
     public class TimeOfAction : MonoBehaviour
     {
         [SerializeField] private Image _image;
-        [SerializeField] private CanvasGroup _canvasGroup;
+
+        private Coroutine _runCoroutine;
 
         public void StartRunCoroutine(float time)
         {
-            StartCoroutine(Run(time));
+            _runCoroutine = StartCoroutine(Run(time));
+        }
+
+        public void StopRunCoroutine()
+        {
+            StopCoroutine(_runCoroutine);
+            _image.fillAmount = 0;
         }
 
         private IEnumerator Run(float time)

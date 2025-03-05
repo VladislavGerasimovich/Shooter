@@ -23,7 +23,6 @@ namespace Weapons
 
         public override void Shoot(Vector3 startpoint, Vector3 direction)
         {
-            Debug.Log(_weaponAmmo.CanShoot + " weapon ammo can shoot");
             if(_attackDelay.CanAttack == true && _weaponAmmo.CanShoot == true)
             {
                 _weaponAmmo.Subtract();

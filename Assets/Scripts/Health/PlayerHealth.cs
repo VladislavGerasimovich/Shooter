@@ -15,7 +15,6 @@ namespace Health
 
         private void Awake()
         {
-            Health = _maxHealth;
             _text.text = Health.ToString();
         }
 

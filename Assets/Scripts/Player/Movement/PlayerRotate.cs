@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 
 namespace Player.Movement
@@ -5,6 +6,7 @@ namespace Player.Movement
     public class PlayerRotate : MonoBehaviour
     {
         [SerializeField] private float _horizontalTurnSensitivity = 10f;
+        [SerializeField] private InventoryPanel _inventoryPanel;
 
         private Transform _transform;
 
@@ -15,7 +17,10 @@ namespace Player.Movement
 
         private void Update()
         {
-            _transform.Rotate(Vector3.up * Input.GetAxis(Constants.HorizontalMouseAxis) * _horizontalTurnSensitivity);
+            if(_inventoryPanel.IsOpen == false)
+            {
+                _transform.Rotate(Vector3.up * Input.GetAxis(Constants.HorizontalMouseAxis) * _horizontalTurnSensitivity);
+            }
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Health
 
         public virtual void TakeDamage(float damage)
         {
-            Debug.Log(damage + " inflict damage");
             if(damage < 0)
             {
                 return;

@@ -2,6 +2,8 @@ using Animations.Enemies;
 using Enemies.Chase;
 using Enemies.Movement;
 using Enemies.Observ;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Health
@@ -13,6 +15,7 @@ namespace Health
     [RequireComponent(typeof(Collider))]
     public class EnemyHealth : AbstractHealth
     {
+        [SerializeField] private float _maxHealth;
         [SerializeField] private EnemyObserv _enemyObserv;
         [SerializeField] private Collider _attackCollider;
 
@@ -21,6 +24,10 @@ namespace Health
         private EnemyAnimations _enemyAnimations;
         private Rigidbody _rigidbody;
         private Collider _collider;
+
+        public event Action Died;
+
+        public float CurrentHealth => Health;
 
         private void Awake()
         {
@@ -41,6 +48,17 @@ namespace Health
             _enemyChasing.StopChase();
             _enemyPatrolling.StopPatrolling();
             _enemyAnimations.Died();
+            Died?.Invoke();
+        }
+
+        public void Restore()
+        {
+            Health = _maxHealth;
+            _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            _rigidbody.isKinematic = false;
+            _enemyObserv.gameObject.SetActive(true);
+            _collider.enabled = true;
+            _attackCollider.enabled = true;
         }
     }
 }

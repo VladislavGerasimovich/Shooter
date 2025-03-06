@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
+using Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +9,8 @@ namespace UI
     {
         [SerializeField] private Transform _panel;
         [SerializeField] private Button _restartButton;
+        [SerializeField] private GameTime _gameTime;
+        [SerializeField] private GameSession _gameSession;
 
         private PanelsCanvasGroup _panelsCanvasGroup;
 
@@ -31,12 +31,15 @@ namespace UI
 
         public void On()
         {
+            //_gameTime.Stop();
             _panelsCanvasGroup.On();
             _panel.gameObject.SetActive(true);
         }
 
         public void Off()
         {
+            _gameSession.Restart();
+            _gameTime.Run();
             _panelsCanvasGroup.Off();
             _panel.gameObject.SetActive(false);
         }

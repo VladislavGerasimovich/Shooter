@@ -15,6 +15,7 @@ namespace Enemies.Movement
         private Transform[] _points;
         private int _currentPoint;
         private bool _isWork;
+        private Coroutine _patrolCoroutine;
 
         private void Awake()
         {
@@ -26,17 +27,34 @@ namespace Enemies.Movement
             {
                 _points[i] = _path.GetChild(i);
             }
+        }
 
-            StartCoroutine(MoveBetweenPoints());
+        private void Start()
+        {
+            StartPatrolling();
+        }
+
+        public void StartPatrolling()
+        {
+            if(_patrolCoroutine == null)
+            {
+                _patrolCoroutine = StartCoroutine(MoveBetweenPoints());
+            }
         }
 
         public void StopPatrolling()
         {
-            _isWork = false;
+            if(_patrolCoroutine != null)
+            {
+                _patrolCoroutine = null;
+                StopCoroutine(MoveBetweenPoints());
+                _isWork = false;
+            }
         }
 
         private IEnumerator MoveBetweenPoints()
         {
+            _currentPoint = 0;
             _enemyAnimations.Walk();
             _isWork = true;
 
@@ -47,11 +65,6 @@ namespace Enemies.Movement
 
                 if (transform.position == target.position)
                 {
-                    _enemyAnimations.Idle();
-
-                    yield return new WaitForSeconds(3);
-
-                    _enemyAnimations.Walk();
                     _currentPoint++;
 
                     if (_currentPoint >= _points.Length)

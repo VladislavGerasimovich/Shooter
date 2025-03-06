@@ -17,8 +17,12 @@ namespace UI.Grid
 
         private void Awake()
         {
-            _uiItemButtons = new List<UIItemButton>();
             _itemsUsed = GetComponent<UIItemsUsed>();
+        }
+
+        public void Init()
+        {
+            _uiItemButtons = new List<UIItemButton>();
         }
 
         public void InitButton(UIItemView itemView, int count, string type)

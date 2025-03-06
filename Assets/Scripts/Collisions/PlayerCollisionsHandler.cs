@@ -21,10 +21,9 @@ namespace Collisions
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out EnemyAttack enemyAttack))
+            if (other.TryGetComponent(out EnemyDamage enemyDamage))
             {
-                Debug.Log("collision");
-                _playerHealth.TakeDamage(enemyAttack.Damage);
+                _playerHealth.TakeDamage(enemyDamage.Damage);
             }
 
             if (other.TryGetComponent(out Object3d object3d))

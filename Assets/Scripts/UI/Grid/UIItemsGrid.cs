@@ -44,6 +44,9 @@ namespace UI.Grid
 
         public void Set()
         {
+            _firstAidKitViews.Init();
+            _ammoViews.Init();
+
             for (int i = 0; i < _itemsUsed.WeaponsCount; i++)
             {
                 Item item = _itemsUsed.GetWeaponByIndex(i);

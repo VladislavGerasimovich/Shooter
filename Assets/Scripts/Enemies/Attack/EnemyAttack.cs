@@ -4,25 +4,16 @@ using UnityEngine;
 
 namespace Enemies.Attack
 {
-    [RequireComponent(typeof(Collider))]
     public class EnemyAttack : MonoBehaviour
     {
-        [SerializeField] private float _damage = 11;
         [SerializeField] private EnemyAnimations _enemyAnimations;
         [SerializeField] private float _timeOfColliderEnabled = 0.3f;
         [SerializeField] private float _delayAfterAttack;
+        [SerializeField] private Collider _attackCollider;
 
         bool _isAttacked;
-        private Collider _attackCollider;
-
-        public float Damage => _damage;
 
         public Coroutine AttackCoroutine { get; private set; }
-
-        private void Awake()
-        {
-            _attackCollider = GetComponent<Collider>();
-        }
 
         public void Run()
         {

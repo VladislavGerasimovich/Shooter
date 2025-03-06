@@ -9,6 +9,7 @@ namespace Player.Movement
         [SerializeField] private float _speed = 3f;
         [SerializeField] private float _strafeSpeed = 3f;
         [SerializeField] private Transform _cameraTransform;
+        [SerializeField] private Vector3 _startPosition;
 
         private Vector3 _verticalVelocity;
         private CharacterController _characterController;
@@ -47,17 +48,16 @@ namespace Player.Movement
             }
         }
 
+        public void SetPosition()
+        {
+            _characterController.enabled = false;
+            transform.position = new Vector3(0,0,-5);
+            _characterController.enabled = true;
+        }
+
         private Vector3 ProjectOnPlane(Vector3 vector)
         {
             return Vector3.ProjectOnPlane(vector, Vector3.up).normalized;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            var character = GetComponent<CharacterController>();
-
-            Gizmos.DrawWireCube(transform.position, Vector3.right + Vector3.forward + Vector3.up * character.height);
         }
     }
 }

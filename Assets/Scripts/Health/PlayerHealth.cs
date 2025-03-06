@@ -32,6 +32,12 @@ namespace Health
             _text.text = Health.ToString();
         }
 
+        public void Restore()
+        {
+            Health = _maxHealth;
+            _text.text = Health.ToString();
+        }
+
         public override void TakeDamage(float damage)
         {
             base.TakeDamage(damage);

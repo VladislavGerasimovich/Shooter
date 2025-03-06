@@ -14,7 +14,13 @@ namespace Objects3d
         public void Destroy()
         {
             _objectRotate.StopRotate();
-            Destroy(transform.gameObject);
+            transform.gameObject.SetActive(false);
+        }
+
+        public void Restore()
+        {
+            transform.gameObject.SetActive(true);
+            _objectRotate.StartRotate();
         }
     }
 }

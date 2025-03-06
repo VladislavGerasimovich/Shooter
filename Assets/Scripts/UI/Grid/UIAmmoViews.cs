@@ -8,7 +8,7 @@ namespace UI.Grid
     {
         public Dictionary<string, UIItemView> _uiItemViewsByType;
 
-        private void Awake()
+        public void Init()
         {
             _uiItemViewsByType = new Dictionary<string, UIItemView>();
         }

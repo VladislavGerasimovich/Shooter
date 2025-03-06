@@ -9,8 +9,16 @@ namespace Objects3d
 
         private void Start()
         {
-            _isWorking = true;
-            StartCoroutine(RotateCoroutine());
+            StartRotate();
+        }
+
+        public void StartRotate()
+        {
+            if (_isWorking == false)
+            {
+                _isWorking = true;
+                StartCoroutine(RotateCoroutine());
+            }
         }
 
         public void StopRotate()

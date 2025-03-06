@@ -11,6 +11,7 @@ namespace UI.Grid
     {
         private Button _button;
 
+        public event Action<IItemButton> Enabled;
         public event Action<IItemButton> Click;
         public event Action<IItemButton> ButtonDisabled;
 
@@ -26,6 +27,7 @@ namespace UI.Grid
         private void OnEnable()
         {
             _button.onClick.AddListener(OnButtonClick);
+            Enabled?.Invoke(this);
         }
 
         private void OnDisable()

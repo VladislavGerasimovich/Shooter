@@ -7,7 +7,7 @@ namespace Player.Shoot
     public class PlayerShoot : MonoBehaviour
     {
         [SerializeField] private Transform _cameraTransform;
-        [SerializeField] private InventoryPanel _inventoryPanel;
+        [SerializeField] private PanelsCanvasGroup _inventoryPanel;
 
         private Weapon _currentWeapon;
 

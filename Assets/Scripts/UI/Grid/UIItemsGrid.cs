@@ -8,27 +8,28 @@ using UnityEngine.UI;
 
 namespace UI.Grid
 {
-    [RequireComponent(typeof(GridLayoutGroup))]
     [RequireComponent(typeof(UIItemsUsed))]
     [RequireComponent(typeof(UIAmmoViews))]
+    [RequireComponent(typeof(UIFirstAidKitViews))]
     public class UIItemsGrid : MonoBehaviour
     {
         [SerializeField] private SlotStatus _slotPrefab;
         [SerializeField] private UIItemView _uiItemPrefab;
         [SerializeField] private Transform _container;
         [SerializeField] private PlayerHealth _playerHealth;
+        [SerializeField] private GridLayoutGroup _gridLayoutGroup;
 
-        private GridLayoutGroup _gridLayoutGroup;
         private UIItemsUsed _itemsUsed;
         private UIAmmoViews _ammoViews;
+        private UIFirstAidKitViews _firstAidKitViews;
         private int _count;
         private List<SlotStatus> _slots;
 
         private void Awake()
         {
-            _gridLayoutGroup = GetComponent<GridLayoutGroup>();
             _itemsUsed = GetComponent<UIItemsUsed>();
             _ammoViews = GetComponent<UIAmmoViews>();
+            _firstAidKitViews = GetComponent<UIFirstAidKitViews>();
             _count = 20;
             _slots = new List<SlotStatus>();
 
@@ -39,11 +40,6 @@ namespace UI.Grid
             }
 
             Set();
-        }
-
-        private void Start()
-        {
-            StartCoroutine(SwitchOffGridLayoutGroup());
         }
 
         public void Set()
@@ -65,16 +61,8 @@ namespace UI.Grid
             {
                 FirstAidKit item = _itemsUsed.GetFirstAidKitByIndex(i);
                 CreateItem(item.Icon, out UIItemView uiItemView, item.CurrentAmount);
-                InitButton(uiItemView, item.HealthRestoredCount, item.Type);
+                _firstAidKitViews.InitButton(uiItemView, item.HealthRestoredCount, item.Type);
             }
-        }
-
-        private void InitButton(UIItemView itemView, int count, string type)
-        {
-            UIItemButton itemButton = itemView.GetComponent<UIItemButton>();
-            itemButton.Init(count, type);
-            itemButton.Click += OnItemButtonClick;
-            itemButton.ButtonDisabled += OnButtonDisabled;
         }
 
         private void CreateItem(Sprite icon, int amount = 0)
@@ -92,36 +80,6 @@ namespace UI.Grid
             uiItemView = itemView;
             itemView.Set(icon, amount);
             slot.Set(true);
-        }
-
-        private IEnumerator SwitchOffGridLayoutGroup()
-        {
-            yield return null;
-            _gridLayoutGroup.enabled = false;
-        }
-
-        private void OnItemButtonClick(IItemButton itemButton)
-        {
-            if(_playerHealth.MaxHealth > _playerHealth.CurrentHealth)
-            {
-                FirstAidKit firstAidKit = _itemsUsed.GetFirstAidKitByType(itemButton.Type);
-
-                if(firstAidKit != null)
-                {
-                    if(firstAidKit.CurrentAmount > 0)
-                    {
-                        _playerHealth.Add(firstAidKit.HealthRestoredCount);
-                        firstAidKit.SubtractAmount();
-                        itemButton.UIItemVIew.Set(firstAidKit.Icon, firstAidKit.CurrentAmount);
-                    }
-                }
-            }
-        }
-
-        private void OnButtonDisabled(IItemButton itemButton)
-        {
-            itemButton.Click -= OnItemButtonClick;
-            itemButton.ButtonDisabled -= OnButtonDisabled;
         }
     }
 }

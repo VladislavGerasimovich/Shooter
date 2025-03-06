@@ -15,4 +15,4 @@ MonoBehaviour:
   _image: {fileID: 21300000, guid: 106a79413e1c9fd478b59b7b47cbbcaf, type: 3}
   _type: ShotgunAmmo
   _maxAmount: 12
-  _currentAmount: 2
+  _currentAmount: 8

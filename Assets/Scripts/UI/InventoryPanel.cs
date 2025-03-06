@@ -1,32 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UI
 {
-    [RequireComponent(typeof(CanvasGroup))]
+    [RequireComponent(typeof(PanelsCanvasGroup))]
     public class InventoryPanel : MonoBehaviour
     {
-        private CanvasGroup _canvasGroup;
+        [SerializeField] private Transform _panel;
+        [SerializeField] private Transform _gameOverPanel;
 
-        public bool IsOpen { get; private set; }
+        private PanelsCanvasGroup _panelsCanvasGroup;
 
         private void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
+            _panelsCanvasGroup = GetComponent<PanelsCanvasGroup>();
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.I))
             {
-                SwitchPanel();
-            }
-        }
+                if(_gameOverPanel.gameObject.activeInHierarchy == true)
+                {
+                    return;
+                }
+                else if (_panel.gameObject.activeInHierarchy == true)
+                {
+                    _panelsCanvasGroup.Off();
+                    _panel.gameObject.SetActive(false);
 
-        private void SwitchPanel()
-        {
-            IsOpen = _canvasGroup.alpha == 1 ? false : true;
-            _canvasGroup.blocksRaycasts = _canvasGroup.alpha == 1 ? false : true;
-            _canvasGroup.alpha = _canvasGroup.alpha == 1 ? 0 : 1;
+                    return;
+                }
+
+                _panelsCanvasGroup.On();
+                _panel.gameObject.SetActive(true);
+            }
         }
     }
 }

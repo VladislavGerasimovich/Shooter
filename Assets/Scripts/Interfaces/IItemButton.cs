@@ -5,6 +5,7 @@ namespace Interfaces
 {
     public interface IItemButton
     {
+        public event Action<IItemButton> Enabled;
         public event Action<IItemButton> Click;
         public event Action<IItemButton> ButtonDisabled;
 

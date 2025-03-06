@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UI;
 
 namespace Health
 {
@@ -9,6 +10,7 @@ namespace Health
     {
         [SerializeField] private float _maxHealth;
         [SerializeField] private TMP_Text _text;
+        [SerializeField] private GameOverPanel _gameOverPanel;
 
         public float MaxHealth => _maxHealth;
         public float CurrentHealth => Health;
@@ -38,7 +40,7 @@ namespace Health
 
         public override void Die()
         {
-            Debug.Log("player died");
+            _gameOverPanel.On();
         }
     }
 }

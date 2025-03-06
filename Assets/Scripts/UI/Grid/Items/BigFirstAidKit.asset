@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BigFirstAidKit
   m_EditorClassIdentifier: 
   _image: {fileID: 895354593, guid: bf25c11c5871c9342a16046e9c5e7bbb, type: 3}
+  _type: BigFirstAidKit
   _maxAmount: 3
   _currentAmount: 3
-  _type: BigFirstAidKit
   _healthRestoredCount: 50

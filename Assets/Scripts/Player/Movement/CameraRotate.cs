@@ -8,7 +8,7 @@ namespace Player.Movement
         [SerializeField] private float _verticalTurnSensitivity = 10f;
         [SerializeField] private float _verticalMinAngle = -89;
         [SerializeField] private float _verticalMaxAngle = 89;
-        [SerializeField] private InventoryPanel _inventoryPanel;
+        [SerializeField] private PanelsCanvasGroup _inventoryPanel;
 
         private float _cameraAngle = 0;
 

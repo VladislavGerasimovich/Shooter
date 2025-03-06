@@ -6,7 +6,7 @@ namespace Player.Movement
     public class PlayerRotate : MonoBehaviour
     {
         [SerializeField] private float _horizontalTurnSensitivity = 10f;
-        [SerializeField] private InventoryPanel _inventoryPanel;
+        [SerializeField] private PanelsCanvasGroup _inventoryPanel;
 
         private Transform _transform;
 

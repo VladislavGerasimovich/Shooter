@@ -16,7 +16,7 @@ namespace Weapons
         [SerializeField] private TimeOfAction _timeOfAction;
         [SerializeField] private Ammo _ammo;
         [SerializeField] private UIAmmoViews _ammoViews;
-        [SerializeField] private InventoryPanel _inventoryPanel;
+        [SerializeField] private PanelsCanvasGroup _inventoryPanel;
 
         private WeaponStatus _weaponStatus;
         private Coroutine _reloadCoroutine;
@@ -104,6 +104,7 @@ namespace Weapons
         public void Subtract()
         {
             _ammo.SubtractAmount();
+            Debug.Log(_itemView + " item view");
             _itemView.Set(_ammo.Icon, _ammo.CurrentAmount);
             AmmoInMagazine--;
             _ammoCountView.Set(AmmoInMagazine, CurrentAmmoCount);

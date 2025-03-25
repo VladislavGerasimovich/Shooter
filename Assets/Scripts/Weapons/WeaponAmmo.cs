@@ -10,7 +10,6 @@ namespace Weapons
     public class WeaponAmmo : MonoBehaviour
     {
         [SerializeField] private float _reloadTime;
-        [SerializeField] private int _maxAmmo;
         [SerializeField] private int _maxAmmoInMagazine;
         [SerializeField] private AmmoCountView _ammoCountView;
         [SerializeField] private TimeOfAction _timeOfAction;
@@ -25,12 +24,12 @@ namespace Weapons
         public int CurrentAmmoCount { get; private set; }
         public int AmmoInMagazine { get; private set; }
         public bool CanShoot { get; private set; }
-
-        public int MaxAmmo => _maxAmmo;
+        public int MaxAmmo { get; private set; }
 
         private void Awake()
         {
             CurrentAmmoCount = _ammo.CurrentAmount;
+            MaxAmmo = _ammo.MaxAmount;
             _weaponStatus = GetComponent<WeaponStatus>();
 
             if (CurrentAmmoCount > _maxAmmoInMagazine)
@@ -82,11 +81,11 @@ namespace Weapons
         {
             int allCurrentAmmoCount = CurrentAmmoCount + AmmoInMagazine;
 
-            if (allCurrentAmmoCount < _maxAmmo)
+            if (allCurrentAmmoCount < MaxAmmo)
             {
-                if(value > (_maxAmmo - CurrentAmmoCount))
+                if(value > (MaxAmmo - CurrentAmmoCount))
                 {
-                    CurrentAmmoCount = _maxAmmo - AmmoInMagazine;
+                    CurrentAmmoCount = MaxAmmo - AmmoInMagazine;
                     _ammo.AddAmout(value);
                     _itemView.Set(_ammo.Icon, _ammo.CurrentAmount);
                     SetView();

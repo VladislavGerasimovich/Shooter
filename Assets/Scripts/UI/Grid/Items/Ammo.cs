@@ -11,6 +11,7 @@ namespace UI.Grid.Items
 
         public string Type => _type;
         public int CurrentAmount => _currentAmount;
+        public int MaxAmount => _maxAmount;
 
         public void SubtractAmount()
         {
